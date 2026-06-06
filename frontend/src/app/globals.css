@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Modern Premium Medical/Wellness design tokens */
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary-rgb: 15, 118, 110; /* #0f766e - Teal 700 */
+  --primary-light-rgb: 20, 184, 166; /* #14b8a6 - Teal 500 */
+  --secondary-rgb: 16, 185, 129; /* #10b981 - Emerald 500 */
+  --accent-rgb: 245, 158, 11; /* #f59e0b - Amber 500 */
+  --danger-rgb: 239, 68, 68; /* #ef4444 - Red 500 */
+  
+  --bg-gradient-start: #f8fafc; /* Slate 50 */
+  --bg-gradient-end: #f1f5f9; /* Slate 100 */
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(226, 232, 240, 0.8);
+  --text-primary: #0f172a; /* Slate 900 */
+  --text-secondary: #475569; /* Slate 600 */
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-premium: 0 20px 25px -5px rgba(15, 118, 110, 0.08), 0 8px 10px -6px rgba(15, 118, 110, 0.08);
+}
+
+:root.dark {
+  --background: #030712;
+  --foreground: #f9fafb;
+  --bg-gradient-start: #0b0f19; /* Slate 950 */
+  --bg-gradient-end: #030712; /* Slate 980 */
+  --card-bg: rgba(17, 24, 39, 0.7);
+  --card-border: rgba(31, 41, 55, 0.5);
+  --text-primary: #f9fafb; /* Slate 50 */
+  --text-secondary: #9ca3af; /* Slate 400 */
+}
+
+body {
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-primary);
+  background: radial-gradient(circle at top right, rgba(20, 184, 166, 0.08), transparent 400px), 
+              radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent 400px),
+              linear-gradient(to bottom right, var(--bg-gradient-start), var(--bg-gradient-end));
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 118, 110, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 118, 110, 0.6);
+}
+
+/* Custom animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Modern Gradient text helper */
+.gradient-text {
+  background: linear-gradient(135deg, #0f766e, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #2dd4bf, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Interactive custom card */
+.interactive-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-premium);
+  border-color: rgba(20, 184, 166, 0.4);
+}
